@@ -1,0 +1,8 @@
+streamlit
+os
+moviepy
+VideoFileClip
+AudioFileClip
+pydub
+AudioSegment
+zipfile

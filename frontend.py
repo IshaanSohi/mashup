@@ -64,25 +64,19 @@ if st.button('Submit'):
         for file in mp3_files:
             print(file)
 
-        startMin = 0
-        startSec = 00
+        from moviepy.editor import *
+        audio = AudioFileClip(mp3_files[0])
 
-        endMin = 0
-#endSec = int(input('Enter time (in s)'))
-#endSec=int(sys.argv[3])
-        endSec=duration
-        startTime = startMin*60*1000+startSec*1000
-        endTime = endMin*60*1000+endSec*1000
+# Trim the audio file
+        merged_audio = audio.subclip(start_time=0, end_time=0)
+        
 
-        merger= AudioSegment.from_mp3(directory+str('/')+mp3_files[0])
-        merger=merger[0:0]
         for i in range(0,len(mp3_files)):
-            song = AudioSegment.from_mp3(directory+str('/')+mp3_files[i])
-            extract = song[startTime:endTime] 
-            merger+=extract
-            extract.export( "audio_file_trim"+str(i)+'.mp3', format="mp3")
+            audio = AudioFileClip(mp3_files[i])
+            trimmed=audio.subclip(start_time=0, end_time=duration)
+            merged_audio = concatenate_audioclips([merged_audio, trimmed])
 #name1=sys.argv[4]
-        merger.export( "merged"+'.mp3', format="mp3")
+        merged_audio.write_audiofile("merged.mp3")
 #merger.export( name1, format="mp3")
         import zipfile 
         def compress_mp3_to_zip(mp3_file_path, zip_file_path):

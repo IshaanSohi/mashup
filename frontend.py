@@ -74,10 +74,10 @@ if st.button('Submit'):
         startTime = startMin*60*1000+startSec*1000
         endTime = endMin*60*1000+endSec*1000
 
-        merger= AudioSegment.from_mp3(directory+str('\\')+mp3_files[0])
+        merger= AudioSegment.from_mp3(directory+str('/')+mp3_files[0])
         merger=merger[0:0]
         for i in range(0,len(mp3_files)):
-            song = AudioSegment.from_mp3(directory+str('\\')+mp3_files[i])
+            song = AudioSegment.from_mp3(directory+str('/')+mp3_files[i])
             extract = song[startTime:endTime] 
             merger+=extract
             extract.export( "audio_file_trim"+str(i)+'.mp3', format="mp3")

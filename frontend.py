@@ -95,9 +95,9 @@ if st.button('Submit'):
 if(flag==1):
         with open("music.zip", "rb") as fp:
     
-btn = st.download_button(
+        btn = st.download_button(
         label="Download ZIP",
         data=fp,
         file_name="merged.zip",
         mime="application/zip"
-    )
+        )

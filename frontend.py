@@ -1,3 +1,4 @@
+flag=0
 import streamlit as st
 import os
 st.title('Mashup')
@@ -89,9 +90,12 @@ if st.button('Submit'):
                 zip_file.write(mp3_file_path)
 
         compress_mp3_to_zip('merged.mp3', 'music.zip')
+        flag=1
 
-with open("music.zip", "rb") as fp:
-    btn = st.download_button(
+if(flag==1):
+        with open("music.zip", "rb") as fp:
+    
+btn = st.download_button(
         label="Download ZIP",
         data=fp,
         file_name="merged.zip",

@@ -68,12 +68,12 @@ if st.button('Submit'):
         audio = AudioFileClip(mp3_files[0])
 
 # Trim the audio file
-        merged_audio = audio.subclip(start_time=0, end_time=0)
+        merged_audio = audio.subclip(0,0)
         
 
         for i in range(0,len(mp3_files)):
             audio = AudioFileClip(mp3_files[i])
-            trimmed=audio.subclip(start_time=0, end_time=duration)
+            trimmed=audio.subclip(0,duration)
             merged_audio = concatenate_audioclips([merged_audio, trimmed])
 #name1=sys.argv[4]
         merged_audio.write_audiofile("merged.mp3")

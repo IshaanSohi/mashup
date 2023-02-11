@@ -50,9 +50,9 @@ if st.button('Submit'):
         from pydub import AudioSegment
 
         import os
-        AudioSegment.converter = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"
-        AudioSegment.ffmpeg = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"
-        AudioSegment.ffprobe = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffprobe.exe"
+        #AudioSegment.converter = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"
+        #AudioSegment.ffmpeg = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"
+        #AudioSegment.ffprobe = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffprobe.exe"
 
         directory = 'C:\\Users\91700\Documents\Python'
 

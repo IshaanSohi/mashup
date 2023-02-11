@@ -28,7 +28,7 @@ if st.button('Submit'):
             Download(link[i])
 
 
-        directory = 'C:\\Users\91700\Documents\Python'
+        directory = os.getcwd()
 
 
         files = os.listdir(directory)
@@ -55,7 +55,7 @@ if st.button('Submit'):
         #AudioSegment.ffmpeg = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"
         #AudioSegment.ffprobe = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffprobe.exe"
 
-        directory = 'C:\\Users\91700\Documents\Python'
+        directory = os.getcwd()
 
         files = os.listdir(directory)
 

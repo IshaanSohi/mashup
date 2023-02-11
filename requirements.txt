@@ -1,3 +1,4 @@
 streamlit
 moviepy
 pydub
+youtube_search

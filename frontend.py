@@ -26,7 +26,7 @@ end=0
 import streamlit as st
 import os
 st.title('Mashup')
-
+st.write('Made by Ishaan Singh Sohi')
 name=st.text_input("Singer Name")
 n=int(st.number_input("No. of videos",step=1))
 duration=int(st.number_input("duration of each video",step=1))
@@ -167,7 +167,7 @@ if(flag==1):
             st.write('File sent to', Email)
             end=1
 # import glob
-st.write('Made by Ishaan Singh Sohi')
+
 # folder = os.getcwd()
 # if(end==1):
 #     folder=os.getcwd()

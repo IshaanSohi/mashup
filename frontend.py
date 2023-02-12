@@ -28,8 +28,8 @@ import os
 st.title('Mashup')
 st.write('Made by Singla saab')
 name=st.text_input("Singer Name")
-n=int(st.number_input("No. of videos"),step=int)
-duration=int(st.number_input("duration of each video"),step=int)
+n=int(st.number_input("No. of videos",step=int))
+duration=int(st.number_input("duration of each video",step=int))
 
 Email=st.text_input("Email id")
 if st.button('Submit'):

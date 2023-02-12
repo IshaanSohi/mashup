@@ -48,7 +48,7 @@ if st.button('Submit'):
             audio = video.audio
             audio.write_audiofile("audio_file"+str(i)+".mp3")
 
-        from pydub import AudioSegment
+        #from pydub import AudioSegment
 
         import os
         #AudioSegment.converter = r"C:\Users\91700\Documents\Python\pyAI3.7\Scripts\ffmpeg.exe"

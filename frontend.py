@@ -25,7 +25,7 @@ flag=0
 end=0
 import streamlit as st
 import os
-st.title('Mashup')
+st.title('Mashup emojis:notes:')
 st.write('Made by Ishaan Singh Sohi')
 name=st.text_input("Singer Name")
 n=int(st.number_input("No. of videos",step=1))

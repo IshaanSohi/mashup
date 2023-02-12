@@ -119,7 +119,7 @@ password = "erwqtvswrvcnokry"
 
 # Email settings
 subject = "Zip file attached"
-zip_file_path = os.getcwd()
+zip_file_path = '/app/mashup/music.zip'
 
 # Create message
 message = MIMEMultipart()

@@ -2,8 +2,9 @@ flag=0
 import os
 folder = os.getcwd()
 for extension in ('.mp3', '.mp4'):
-    for file in glob.glob(os.path.join(folder, f'*{extension}')):
-        os.remove(file)
+    if(len(file)!=0):
+        for file in glob.glob(os.path.join(folder, f'*{extension}')):
+            os.remove(file)
 import streamlit as st
 import os
 st.title('Mashup')

@@ -1,3 +1,5 @@
+import os
+import glob
 flag=0
 end=0
 import streamlit as st
@@ -86,6 +88,11 @@ if st.button('Submit'):
 
         compress_mp3_to_zip('merged.mp3', 'music.zip')
         flag=1
+        folder=os.getcwd()
+        for file in glob.glob(os.path.join(folder, '*.mp4')):
+            os.remove(file)
+
+
 
 if(flag==1):
         with open("music.zip", "rb") as fp:
@@ -142,7 +149,6 @@ import glob
 
 folder = os.getcwd()
 if(end==1):
-    for extension in ('.mp4'):
-        for file in glob.glob(os.path.join(folder, f'*{extension}')):
-            os.remove(file)
-        
+    folder=os.getcwd()
+    for file in glob.glob(os.path.join(folder, '*.mp3')):
+        os.remove(file)

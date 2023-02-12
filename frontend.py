@@ -1,5 +1,26 @@
 import os
 import glob
+
+# Get a list of all files in the folder
+folder = os.getcwd()
+files = glob.glob(folder + "/*")
+
+# Count the number of MP3 and MP4 files in the list
+mp3_files = [f for f in files if f.endswith(".mp3")]
+mp4_files = [f for f in files if f.endswith(".mp4")]
+
+if(len(mp3_files)>0):
+    folder=os.getcwd()
+    for file in glob.glob(os.path.join(folder, '*.mp3')):
+        os.remove(file)
+    
+if(len(mp4_files)>0):
+    folder=os.getcwd()
+    for file in glob.glob(os.path.join(folder, '*.mp4')):
+        os.remove(file)
+
+
+
 flag=0
 end=0
 import streamlit as st
@@ -89,8 +110,8 @@ if st.button('Submit'):
         compress_mp3_to_zip('merged.mp3', 'music.zip')
         flag=1
         folder=os.getcwd()
-        for file in glob.glob(os.path.join(folder, '*.mp4')):
-            os.remove(file)
+#         for file in glob.glob(os.path.join(folder, '*.mp4')):
+#             os.remove(file)
 
 
 
@@ -145,10 +166,10 @@ if(flag==1):
             smtp.sendmail(from_email, to_email, message.as_string())
             st.write('File sent to', Email)
             end=1
-import glob
+# import glob
 
-folder = os.getcwd()
-if(end==1):
-    folder=os.getcwd()
-    for file in glob.glob(os.path.join(folder, '*.mp3')):
-        os.remove(file)
+# folder = os.getcwd()
+# if(end==1):
+#     folder=os.getcwd()
+#     for file in glob.glob(os.path.join(folder, '*.mp3')):
+#         os.remove(file)

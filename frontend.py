@@ -1,4 +1,5 @@
 flag=0
+end=0
 import streamlit as st
 import os
 st.title('Mashup')
@@ -7,7 +8,7 @@ name=st.text_input("Singer Name")
 n=int(st.number_input("No. of videos"))
 duration=int(st.number_input("duration of each video"))
 
-#Email=st.text_input("Email id")
+Email=st.text_input("Email id")
 if st.button('Submit'):
     
         from youtube_search import YoutubeSearch
@@ -101,49 +102,47 @@ if(flag==1):
         from email.mime.text import MIMEText
         from email import encoders
 
-        mail= st.text_input('Enter Email')
-
-        if(len(mail)>0):
+        
 # Email credentials
-            from_email = "ishaan191201@gmail.com"
-            to_email = mail
-            password = "erwqtvswrvcnokry"
+        from_email = "ishaan191201@gmail.com"
+        to_email = Email
+        password = "erwqtvswrvcnokry"
 
 # Email settings
-            subject = "Zip file attached"
-            zip_file_path = 'music.zip'
+        subject = "Zip file attached"
+        zip_file_path = 'music.zip'
 
 # Create message
-            message = MIMEMultipart()
-            message["From"] = from_email
-            message["To"] = to_email
-            message["Subject"] = subject
+        message = MIMEMultipart()
+        message["From"] = from_email
+        message["To"] = to_email
+        message["Subject"] = subject
 
 # Attach zip file
-            with open(zip_file_path, "rb") as f:
-                 part = MIMEBase("application", "octet-stream")
-                 part.set_payload(f.read())
+        with open(zip_file_path, "rb") as f:
+             part = MIMEBase("application", "octet-stream")
+             part.set_payload(f.read())
 
-            encoders.encode_base64(part)
-            part.add_header("Content-Disposition",
+        encoders.encode_base64(part)
+        part.add_header("Content-Disposition",
                 f"attachment; filename={zip_file_path}")
-            message.attach(part)
+        message.attach(part)
 
 # Send email
-            with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
-                smtp.ehlo()
-                smtp.starttls()
-                smtp.ehlo()
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.ehlo()
+            smtp.starttls()
+            smtp.ehlo()
 
-                smtp.login(from_email, password)
-                smtp.sendmail(from_email, to_email, message.as_string())
-                st.write('File sent to', mail)
+            smtp.login(from_email, password)
+            smtp.sendmail(from_email, to_email, message.as_string())
+            st.write('File sent to', Email)
+            end=1
 import glob
 
 folder = os.getcwd()
-
-for extension in ('.mp3', '.mp4'):
-    for file in glob.glob(os.path.join(folder, f'*{extension}')):
-        os.remove(file)
+if(end==1):
+    for extension in ('.mp4'):
+        for file in glob.glob(os.path.join(folder, f'*{extension}')):
+            os.remove(file)
         
-

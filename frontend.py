@@ -95,6 +95,49 @@ if(flag==1):
             file_name="merged.zip",
             mime="application/zip"
             )
+        import smtplib
+        from email.mime.multipart import MIMEMultipart
+        from email.mime.base import MIMEBase
+        from email.mime.text import MIMEText
+        from email import encoders
+
+        mail= st.text_input('Enter Email')
+
+
+# Email credentials
+        from_email = "ishaan191201@gmail.com"
+        to_email = mail
+        password = "erwqtvswrvcnokry"
+
+# Email settings
+        subject = "Zip file attached"
+        zip_file_path = 'music.zip'
+
+# Create message
+        message = MIMEMultipart()
+        message["From"] = from_email
+        message["To"] = to_email
+        message["Subject"] = subject
+
+# Attach zip file
+        with open(zip_file_path, "rb") as f:
+             part = MIMEBase("application", "octet-stream")
+             part.set_payload(f.read())
+
+        encoders.encode_base64(part)
+        part.add_header("Content-Disposition",
+                f"attachment; filename={zip_file_path}")
+        message.attach(part)
+
+# Send email
+        with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
+            smtp.ehlo()
+            smtp.starttls()
+            smtp.ehlo()
+
+            smtp.login(from_email, password)
+            smtp.sendmail(from_email, to_email, message.as_string())
+            st.write('File sent to', mail)
 import glob
 
 folder = os.getcwd()
@@ -103,46 +146,4 @@ for extension in ('.mp3', '.mp4'):
     for file in glob.glob(os.path.join(folder, f'*{extension}')):
         os.remove(file)
         
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.base import MIMEBase
-from email.mime.text import MIMEText
-from email import encoders
 
-mail= st.text_input('Enter Email')
-
-
-# Email credentials
-from_email = "ishaan191201@gmail.com"
-to_email = mail
-password = "erwqtvswrvcnokry"
-
-# Email settings
-subject = "Zip file attached"
-zip_file_path = '/app/mashup/music.zip'
-
-# Create message
-message = MIMEMultipart()
-message["From"] = from_email
-message["To"] = to_email
-message["Subject"] = subject
-
-# Attach zip file
-with open(zip_file_path, "rb") as f:
-    part = MIMEBase("application", "octet-stream")
-    part.set_payload(f.read())
-
-encoders.encode_base64(part)
-part.add_header("Content-Disposition",
-                f"attachment; filename={zip_file_path}")
-message.attach(part)
-
-# Send email
-with smtplib.SMTP("smtp.gmail.com", 587) as smtp:
-    smtp.ehlo()
-    smtp.starttls()
-    smtp.ehlo()
-
-    smtp.login(from_email, password)
-    smtp.sendmail(from_email, to_email, message.as_string())
-    st.write('File sent to', mail)

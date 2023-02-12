@@ -1,4 +1,5 @@
 flag=0
+import os
 folder = os.getcwd()
 for extension in ('.mp3', '.mp4'):
     for file in glob.glob(os.path.join(folder, f'*{extension}')):
